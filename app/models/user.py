@@ -51,10 +51,11 @@ class User(db.Model, UserMixin):
             'state': self.state,
             'zipcode': self.zipcode,
             'phone': self.phone,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at,
-            'cart_items': [cart_item.to_dict() for cart_item in self.cart_items],
-            'orders': [order.to_dict() for order in self.orders],
-            'reviews': [review.to_dict() for review in self.reviews],
-            'distributor': self.distributor.to_dict() if self.distributor else None
+            'created_at': self.created_at
         }
+        #     'updated_at': self.updated_at,
+        #     'cart_items': [cart_item.to_dict() for cart_item in self.cart_items],
+        #     'orders': [order.to_dict() for order in self.orders],
+        #     'reviews': [review.to_dict() for review in self.reviews],
+        #     'distributor': self.distributor.to_dict() if self.distributor else None
+        # }

@@ -10,6 +10,13 @@ function SignupFormModal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [phone, setPhone] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
@@ -18,8 +25,7 @@ function SignupFormModal() {
 
     if (password !== confirmPassword) {
       return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
+        confirmPassword: "Confirm Password field must be the same as the Password field",
       });
     }
 
@@ -28,6 +34,13 @@ function SignupFormModal() {
         email,
         username,
         password,
+        first_name: firstName,
+        last_name: lastName,
+        address,
+        city,
+        state,
+        zipcode,
+        phone,
       })
     );
 
@@ -42,7 +55,7 @@ function SignupFormModal() {
     <>
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="signup-form">
         <label>
           Email
           <input
@@ -83,6 +96,76 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        <label>
+          First Name
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </label>
+        {errors.firstName && <p>{errors.firstName}</p>}
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </label>
+        {errors.lastName && <p>{errors.lastName}</p>}
+        <label>
+          Address
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </label>
+        {errors.address && <p>{errors.address}</p>}
+        <label>
+          City
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
+          />
+        </label>
+        {errors.city && <p>{errors.city}</p>}
+        <label>
+          State
+          <input
+            type="text"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            required
+          />
+        </label>
+        {errors.state && <p>{errors.state}</p>}
+        <label>
+          Zipcode
+          <input
+            type="text"
+            value={zipcode}
+            onChange={(e) => setZipcode(e.target.value)}
+            required
+          />
+        </label>
+        {errors.zipcode && <p>{errors.zipcode}</p>}
+        <label>
+          Phone
+          <input
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </label>
+        {errors.phone && <p>{errors.phone}</p>}
         <button type="submit">Sign Up</button>
       </form>
     </>

@@ -1,6 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
+import HomePage from '../components/HomePage/HomePage';
+import ItemPage from '../components/ItemPage/ItemPage'
+import CartPage from '../components/CartPage/CartPage';
+import OrdersPage from '../components/OrdersPage/OrdersPage';
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -9,7 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <HomePage />,
       },
       {
         path: "login",
@@ -19,6 +23,22 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
+      {
+        path: "/items/:id",
+        element: <ItemPage />
+      },
+      {
+        path: "/cart",
+        element: <CartPage/>
+      },
+      {
+        path: "/orders",
+        element: <OrdersPage />
+      },
+      {
+        path: "*",
+        element: <h1>Page not found!</h1>
+      }
     ],
   },
 ]);

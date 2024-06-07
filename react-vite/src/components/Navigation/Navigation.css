@@ -1,3 +1,127 @@
 .profile-dropdown {
   position: absolute;
+  right: 15px;
+
+  padding: 5px;
+  top: 120px;
+
+  width: 150px;
+  min-height: 150px;
+  background-color: gray;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-dropdown li {
+  list-style: none;
+}
+
+.profile-dropdown-button {
+  width: 135px;
+  height: 25px;
+  color: white;
+  background-color: gray;
+  border: none;
+  cursor: pointer;
+  border-radius: 12.5px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0px;
+  height: 120px;
+  width: 100%;
+  border-bottom: 3px solid rgb(211, 211, 211);
+  background-color: rgb(28, 24, 24);
+  margin-top: 0px;
+}
+.navbar-logo {
+  width: 200px;
+  margin-left: 25px;
+}
+.navbar-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.navbar-right * {
+  text-decoration: none;
+}
+.new-spot-button {
+  border: none;
+  background-color: rgb(235, 235, 235);
+  color: rgb(102, 158, 177);
+  font-size: 15px;
+  padding-right: 15px;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  color: white;
+  background-color: #ff5b5b;
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.profile-button {
+  height: 50px;
+}
+
+.navbar-icon {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.dropdown-button {
+  background-color: white;
+  color: black;
+  padding: 16px;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  width: 210px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.nav-cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 25px;
+  color: white;
+  background-color: #ff5b5b;
+  font-size: 40px;
+  min-width: 80px;
+  height: 50px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.nav-cart-container * {
+  font-size: 25px;
 }

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f200ecf19f69
+Revision ID: 71026d95fdf2
 Revises: 
-Create Date: 2024-06-07 11:59:12.857193
+Create Date: 2024-06-07 15:16:02.764714
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f200ecf19f69'
+revision = '71026d95fdf2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -28,6 +28,18 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('distributors',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('address', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=25), nullable=False),
+    sa.Column('state', sa.String(length=2), nullable=False),
+    sa.Column('zipcode', sa.String(length=5), nullable=False),
+    sa.Column('phone', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('items',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
@@ -37,6 +49,27 @@ def upgrade():
     sa.Column('sizes', sa.String(length=255), nullable=False),
     sa.Column('in_stock', sa.Integer(), nullable=False),
     sa.Column('main_image', sa.String(length=255), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('orders',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('total', sa.Numeric(precision=10, scale=2), nullable=False),
+    sa.Column('status', sa.String(length=25), nullable=False),
+    sa.Column('delivery_date', sa.DateTime(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('reviews',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('item_id', sa.Integer(), nullable=False),
+    sa.Column('rating', sa.Integer(), nullable=False),
+    sa.Column('body', sa.String(length=255), nullable=False),
+    sa.Column('image_url', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
@@ -59,43 +92,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    op.create_table('distributors',
-    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('address', sa.String(length=255), nullable=False),
-    sa.Column('city', sa.String(length=25), nullable=False),
-    sa.Column('state', sa.String(length=2), nullable=False),
-    sa.Column('zipcode', sa.String(length=5), nullable=False),
-    sa.Column('phone', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('orders',
-    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('total', sa.Numeric(precision=10, scale=2), nullable=False),
-    sa.Column('status', sa.String(length=25), nullable=False),
-    sa.Column('delivery_date', sa.DateTime(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('reviews',
-    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('item_id', sa.Integer(), nullable=False),
-    sa.Column('rating', sa.Integer(), nullable=False),
-    sa.Column('body', sa.String(length=255), nullable=False),
-    sa.Column('image_url', sa.String(length=255), nullable=True),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['item_id'], ['items.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('order_items',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('order_id', sa.Integer(), nullable=False),
@@ -105,9 +101,7 @@ def upgrade():
     sa.Column('quantity', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['item_id'], ['items.id'], ),
     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
@@ -116,10 +110,10 @@ def upgrade():
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('order_items')
+    op.drop_table('users')
     op.drop_table('reviews')
     op.drop_table('orders')
-    op.drop_table('distributors')
-    op.drop_table('users')
     op.drop_table('items')
+    op.drop_table('distributors')
     op.drop_table('cart_items')
     # ### end Alembic commands ###

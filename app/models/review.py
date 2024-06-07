@@ -6,16 +6,16 @@ class Review(db.Model):
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("items.id")), nullable=False)
+    user_id = db.Column(db.Integer, nullable=False) #db.ForeignKey(add_prefix_for_prod("users.id")), 
+    item_id = db.Column(db.Integer, nullable=False)# db.ForeignKey(add_prefix_for_prod("items.id")),
     rating = db.Column(db.Integer, nullable=False)
     body = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    user = db.relationship("User", back_populates="reviews")
-    item = db.relationship("Item", back_populates="reviews")
+    # user = db.relationship("User", back_populates="reviews")
+    # item = db.relationship("Item", back_populates="reviews")
 
     def to_dict(self):
         return {

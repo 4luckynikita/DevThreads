@@ -14,9 +14,9 @@ class Item(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    cart_items = db.relationship("CartItem", back_populates="item", cascade="all, delete-orphan")
-    order_items = db.relationship("OrderItem", back_populates="item", cascade="all, delete-orphan")
-    reviews = db.relationship("Review", back_populates="item", cascade="all, delete-orphan")
+    # cart_items = db.relationship("CartItem", back_populates="item", cascade="all, delete-orphan")
+    # order_items = db.relationship("OrderItem", back_populates="item", cascade="all, delete-orphan")
+    # reviews = db.relationship("Review", back_populates="item", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

@@ -5,7 +5,7 @@ class Distributor(db.Model):
     __tablename__ = "distributors"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    user_id = db.Column(db.Integer, nullable=False)#db.ForeignKey(add_prefix_for_prod("users.id")), 
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(25), nullable=False)
     state = db.Column(db.String(2), nullable=False)
@@ -14,7 +14,7 @@ class Distributor(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    user = db.relationship("User", back_populates="distributor")
+    # user = db.relationship("User", back_populates="distributor")
 
     def to_dict(self):
         return {

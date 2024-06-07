@@ -5,7 +5,7 @@ class Distributor(db.Model):
     __tablename__ = "distributors"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(25), nullable=False)
     state = db.Column(db.String(2), nullable=False)

@@ -6,15 +6,15 @@ class CartItem(db.Model):
     __tablename__ = "cart_items"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    item_id = db.Column(db.Integer, nullable=False)#db.ForeignKey("items.id"), 
-    user_id = db.Column(db.Integer, nullable=False)#db.ForeignKey("users.id"), 
+    item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("items.id")), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     size = db.Column(db.String(25), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    # item = db.relationship("Item", back_populates="cart_items")
-    # user = db.relationship("User", back_populates="cart_items")
+    item = db.relationship("Item", back_populates="cart_items")
+    user = db.relationship("User", back_populates="cart_items")
 
     def to_dict(self):
         return {

@@ -19,9 +19,6 @@ const OrdersPage = () => {
     console.log(ordersState)
     const currentDate = new Date();
     currentDate.setMinutes(currentDate.getMinutes() - 5);
-    function handleDeleteOrder(e, id){
-        
-    }
 
     return <div>
         <h1>Orders</h1>
@@ -37,7 +34,7 @@ const OrdersPage = () => {
                     <p>Status: {new Date(order?.delivery_date) < currentDate ? "Shipped" : "Awaiting Shipment"}</p>
                     <p>Order contents ------------------------</p>
 
-                    {order?.items && order?.items?.map((item) => (
+                    {order?.items?.length && order?.items?.map((item) => (
                         <div key={item?.id}>
                             <h3>{item?.details?.name}</h3>
                             <p>Price: ${item?.details?.price}</p>

@@ -82,6 +82,23 @@ export const editAnOrderItem = (id, formData) => async() => {
         return { server: "Something went wrong. Please try again" };
       }
 }
+export const editAnOrder = (id, formData) => async() => {
+    const response = await fetch(`/api/orders/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        return "Ok";
+      } else if (response.status < 500) {
+        const errorMessages = await response.json();
+        return errorMessages;
+      } else {
+        return { server: "Something went wrong. Please try again" };
+      }
+}
 
 function ordersReducer(state={}, action) {
     switch (action.type) {

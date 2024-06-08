@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { editAnOrderItem, getAllOrders } from "../../redux/orders";
+import { editAnOrderItem, getAllOrders, editAnOrder } from "../../redux/orders";
 
 
 const EditOrderItemModal = ({id, orderId}) => {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
+    
     useEffect(() => {
         dispatch(getAllOrders(sessionUser?.id));
     }, [dispatch, id]);
@@ -50,6 +51,11 @@ const EditOrderItemModal = ({id, orderId}) => {
             console.log(size);
         }
         else {
+            // const updatedData2 = {
+            //     user_id: sessionUser?.id,
+            //     total: 
+            // }
+            // const serverResponse2 = await dispatch(editAnOrder(serverResponse?.order_id, updatedData2));
             dispatch(getAllOrders(sessionUser.id));
             return closeModal()
         }

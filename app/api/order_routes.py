@@ -55,7 +55,7 @@ def get_all_orders(id):
             order_dict['items'] = [item.to_dict() for item in order_items]
             i = 0
             for item in order_items:
-                found_item = Item.query.get(item.id)
+                found_item = Item.query.get(item.item_id)
                 order_dict['items'][i]['details'] = found_item.to_dict()
                 i = i + 1
 
@@ -77,6 +77,24 @@ def delete_order(id):
         db.session.commit()
         return { "message": "Order deleted successfully" }, 200
     
+# Update an Order (total)
+@order_routes.route("/<int:id>", methods=["PUT"])
+def update_order(id):
+    form = OrderForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    old_order = Order.query.get(id)
+    old_order_item = OrderItem.query.get(id)
+    if not old_order:
+        return {"message": "Order could not be found"}, 404
+    if old_order.user_id != current_user.id:
+        return {"message": "This is not your order"}, 401
+    if form.validate_on_submit():
+        old_order.total = form.data["total"]
+        db.session.commit()
+        return old_order.to_dict(), 200
+
+
+
 # Update an Order Item
 @order_routes.route("/item/<int:id>", methods=["PUT"])
 def update_order_item(id):
@@ -84,9 +102,9 @@ def update_order_item(id):
     form["csrf_token"].data = request.cookies["csrf_token"]
     old_order_item = OrderItem.query.get(id)
     if not old_order_item:
-        return {"message": "Album could not be found"}, 404
+        return {"message": "Order item could not be found"}, 404
     if old_order_item.user_id != current_user.id:
-        return {"message": "This is not your album"}, 401
+        return {"message": "This is not your order item"}, 401
     if form.validate_on_submit():
         old_order_item.size = form.data["size"]
         old_order_item.quantity = form.data["quantity"]

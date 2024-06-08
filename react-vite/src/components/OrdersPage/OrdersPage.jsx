@@ -20,6 +20,18 @@ const OrdersPage = () => {
     const currentDate = new Date();
     currentDate.setMinutes(currentDate.getMinutes() - 5);
 
+    let orderTotals = {}
+    ordersState?.map((order) => {
+        let totalski=0;
+        order?.items?.map((item) => {
+            
+            totalski += parseFloat((item?.details?.price * item?.quantity).toFixed(2));
+            console.log("Totalski", totalski)
+        })
+        orderTotals[order?.id] = totalski
+    })
+    console.log("Totals", orderTotals)
+
     return <div>
         <h1>Orders</h1>
         <p>Here you can view, track, and adjust your orders prior to them shipping. It takes approximately 5 minutes for an order to be shipped.</p>
@@ -30,7 +42,7 @@ const OrdersPage = () => {
                 <div key={order?.id}>
                     <h1>------------------------------------</h1>
                     <p>Order #{order?.id}</p>
-                    <p>Total: ${order?.total}</p>
+                    <p>Total: ${orderTotals?.[order?.id]}</p>
                     <p>Status: {new Date(order?.delivery_date) < currentDate ? "Shipped" : "Awaiting Shipment"}</p>
                     <p>Order contents ------------------------</p>
 

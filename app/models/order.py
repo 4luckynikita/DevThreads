@@ -16,7 +16,7 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)#db.ForeignKey(add_prefix_for_prod("users.id")),
     total = db.Column(Numeric(precision=10, scale=2), nullable=False)
     status = db.Column(db.String(25), nullable=False)
-    delivery_date = db.Column(db.DateTime, nullable=False, default=func.datetime(func.current_timestamp(), text("'+' || '5 minutes'")))
+    delivery_date = db.Column(db.DateTime, nullable=False, default=db.func.datetime(db.func.current_timestamp(), text("'+' || '5 minutes'")))
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 

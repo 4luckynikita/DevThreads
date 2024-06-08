@@ -18,7 +18,7 @@ const OrdersPage = () => {
     let ordersState = useSelector((state) => state.orders.orders?.reverse())
     console.log(ordersState)
     const currentDate = new Date();
-
+    currentDate.setMinutes(currentDate.getMinutes() - 5);
     function handleDeleteOrder(e, id){
         
     }

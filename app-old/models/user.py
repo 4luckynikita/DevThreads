@@ -19,13 +19,13 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(25), nullable=False)
     state = db.Column(db.String(2), nullable=False)
     zipcode = db.Column(db.String(5), nullable=False)
-    phone = db.Column(db.String(16), nullable=False)
+    phone = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     # cart_items = db.relationship("CartItem", back_populates="user", cascade="all, delete-orphan")
     # orders = db.relationship("Order", back_populates="user", cascade="all, delete-orphan")
-    reviews = db.relationship("Review", back_populates="user", cascade="all, delete-orphan")
+    # reviews = db.relationship("Review", back_populates="user", cascade="all, delete-orphan")
     # distributor = db.relationship("Distributor", back_populates="user", cascade="all, delete-orphan")
 
     @property

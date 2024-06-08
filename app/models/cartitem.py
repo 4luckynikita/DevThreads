@@ -5,9 +5,12 @@ from .item import Item
 class CartItem(db.Model):
     __tablename__ = "cart_items"
 
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    item_id = db.Column(db.Integer, nullable=False)#db.ForeignKey(add_prefix_for_prod("items.id")), 
-    user_id = db.Column(db.Integer, nullable=False)# db.ForeignKey(add_prefix_for_prod("users.id")),
+    item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("items.id")), nullable=False)#db.ForeignKey(add_prefix_for_prod("items.id")),
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)# db.ForeignKey(add_prefix_for_prod("users.id")),
     size = db.Column(db.String(25), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())

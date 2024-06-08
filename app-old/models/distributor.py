@@ -3,12 +3,12 @@ from .user import User
 
 class Distributor(db.Model):
     __tablename__ = "distributors"
-
-    if environment == 'production':
-        __table_args__ = {'schema': SCHEMA}
+    
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, nullable=False)#db.ForeignKey(add_prefix_for_prod("users.id")),
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)#db.ForeignKey(add_prefix_for_prod("users.id")), 
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(25), nullable=False)
     state = db.Column(db.String(2), nullable=False)

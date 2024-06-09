@@ -15,7 +15,7 @@ const OrdersPage = () => {
         if (!sessionUser) navigate('/');
         dispatch(getAllOrders(sessionUser?.id));
     }, [dispatch, sessionUser]);
-    let ordersState = useSelector((state) => state.orders.orders?.reverse())
+    let ordersState = useSelector((state) => state.orders.orders)
     console.log(ordersState)
     const currentDate = new Date();
     currentDate.setMinutes(currentDate.getMinutes() - 5);
@@ -38,11 +38,11 @@ const OrdersPage = () => {
         {ordersState?.length ? 
         <div>
             
-            {ordersState?.map((order) => (
+            {ordersState?.toReversed()?.map((order) => (
                 <div key={order?.id}>
                     <h1>------------------------------------</h1>
                     <p>Order #{order?.id}</p>
-                    <p>Total: ${orderTotals?.[order?.id]}</p>
+                    <p>Total: ${orderTotals?.[order?.id].toFixed(2)}</p>
                     <p>Status: {new Date(order?.delivery_date) < currentDate ? "Shipped" : "Awaiting Shipment"}</p>
                     <p>Order contents ------------------------</p>
 

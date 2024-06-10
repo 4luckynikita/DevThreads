@@ -48,7 +48,7 @@ const CartPage = () => {
             cartItemState?.map(async (cartItem) => {
                 const orderItemObj = {
                     order_id: order?.id,
-                    item_id: cartItem?.id,
+                    item_id: cartItem?.item_id,
                     user_id: sessionUser.id,
                     size: cartItem?.size,
                     quantity: cartItem?.quantity

@@ -61,10 +61,11 @@ const CartPage = () => {
             await Promise.all(orderItemPromises);
         }
         await clearWholeCart();
+        
         navigate('/orders?ordered=true');
 
     }
-
+    console.log("what if i told you react states arent my cup of tea");
     if (!sessionUser) navigate('/');
     return <div className="cart-container">
         <div className="cart-container-header">

@@ -35,6 +35,8 @@ const CartPage = () => {
             handleDeleteItem(cartItem?.id);
         })
     }
+
+    console.log("The state", cartItemState)
     async function handlePlaceOrder() {
         const orderObj = {
             user_id: sessionUser.id,

@@ -29,9 +29,11 @@
 }
 .order-details-container {
     width: 70%;
+    max-width: 1650px;
 }
 .order-details {
-    width: 100%;
+    width: 97%;
+    
     border-radius: 20px;
     padding: 20px;
     border: 2px solid gray;

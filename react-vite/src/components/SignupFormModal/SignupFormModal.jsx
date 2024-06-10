@@ -91,6 +91,7 @@ function SignupFormModal() {
             onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="Password"
+            minLength="8"
           />
           {errors.password && <p className="signup-error">{errors.password}</p>}
         </label>

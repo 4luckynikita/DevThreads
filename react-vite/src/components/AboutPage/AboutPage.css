@@ -1,0 +1,83 @@
+.about-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.about-container-heading {
+    width: 80%;
+    max-width: 1800px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 2px solid gray;
+}
+.about-inner {
+    max-width: 1080px;
+    width: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px 0px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+.about-inner h2 {
+    margin-bottom: 0;
+}
+.about-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #ff5b5b;
+    box-shadow: 0 0 12px #ff5b5b;
+}
+.about-a-container {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    transition: 0.3s;
+}
+
+.about-git-button{
+    text-decoration: none;
+    height: 38px;
+    width: 160px;
+    border-radius: 21px;
+    border: none;
+    background-color: #0d1117;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.about-linkedin-button{
+    text-decoration: none;
+    height: 38px;
+    width: 160px;
+    border-radius: 21px;
+    border: none;
+    background-color: #0a66c2;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-a-container *:hover {
+    
+    box-shadow: 0 0 10px #ff5b5b;
+    transition: 0.3s;
+}
+.hello-why-r-u-here {
+    margin-top: 25px;
+}

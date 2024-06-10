@@ -2,11 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchItems } from "../../redux/items";
 import "./HomePage.css"
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
     const queryParameters = new URLSearchParams(window.location.search)
     const cartAdded = queryParameters.get("cartAdded")
+    const navigate = useNavigate();
+    function aboutNavigator() {
+        navigate('/about')
+    }
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchItems());
@@ -41,6 +45,9 @@ const HomePage = () => {
                     <div className="squeezer" />
                 </div>
 
+            </div>
+            <div className="homepage-footer">
+                <button onClick={aboutNavigator} className="homepage-about-button">About This Site</button>
             </div>
         </div>
     )

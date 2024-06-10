@@ -6,6 +6,7 @@ import ItemPage from '../components/ItemPage/ItemPage'
 import CartPage from '../components/CartPage/CartPage';
 import OrdersPage from '../components/OrdersPage/OrdersPage';
 import Layout from './Layout';
+import AboutPage from '../components/AboutPage/AboutPage';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/orders",
         element: <OrdersPage />
+      },
+      {
+        path: "/about",
+        element: <AboutPage />
       },
       {
         path: "*",

@@ -114,3 +114,28 @@
     color: green;
     font-size: 20px;
 }
+.homepage-footer {
+    width: 100%;
+    background-color: rgb(28, 24, 24);
+    border-top: 3px solid rgb(211, 211, 211);
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.homepage-about-button {
+    height: 38px;
+    width: 160px;
+    border-radius: 21px;
+    border: none;
+    background-color: gray;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s;
+
+}
+.homepage-about-button:hover {
+    box-shadow: 0 0 10px gold;
+    transition: 0.3s;
+    
+}

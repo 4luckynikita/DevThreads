@@ -21,3 +21,26 @@ button {
 #modal-content input, #modal-content select {
   color: black;
 }
+
+select, button {
+  cursor: pointer;
+}
+
+/* always show arrows on input number in chrome */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.modal-fade-in, #modal-background {
+  animation: fadeIn 0.3s; 
+}
+#modal-background {
+  background-color: rgba(0, 0, 0, 0.253);
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

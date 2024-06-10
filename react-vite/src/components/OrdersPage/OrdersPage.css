@@ -1,0 +1,114 @@
+.orders-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.orders-container * {
+    list-style-type: none;
+}
+.order-placed-popup {
+    font-weight: 500;
+    animation: fadeIn 0.3s;
+    padding: 0px;
+    border-radius: 10px;
+    color: green;
+    font-size: 20px;
+}
+.orders-header {
+    width: 80%;
+    max-width: 1800px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 2px solid gray;
+}
+.orders-header h1 {
+    margin-bottom: 0px;
+}
+.order-details-container {
+    width: 70%;
+}
+.order-details {
+    width: 100%;
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid gray;
+    margin: 10px 0px;
+    transition: 0.3s;
+}
+.order-details:hover{
+    border-color: lightgray;
+    box-shadow: 0 0 15px white;
+    transition: 0.3s;
+}
+.order-details-item {
+    width: 97%;
+    border: 2px solid #ff5b5b;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.order-details-item img {
+    width: 150px;
+    aspect-ratio: 6/8;
+    object-fit: cover;
+}.order-details-body {
+    width: 100%;
+    padding-left: 20px;
+}
+.order-details-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.order-details-footer * {
+    font-weight: 500;
+    font-size: 18px;
+}
+.order-details-footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.cancel-order-button {
+    height: 38px;
+    padding: 2px 50px;
+    margin-bottom: 15px;
+    border-radius: 21px;
+    border: none;
+    background-color: gray;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s;
+    font-weight: 300;
+}
+
+.cancel-order-button:hover {
+    box-shadow: 0 0 10px lightgray;
+    transition: 0.3s;
+    
+}
+
+.edit-order-button {
+    width: 170px;
+    height: 38px;
+
+    margin-bottom: 15px;
+    border-radius: 21px;
+    border: none;
+    background-color: gray;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s;
+    font-weight: 300;
+}
+
+.edit-order-button:hover {
+    box-shadow: 0 0 10px lightgray;
+    transition: 0.3s;
+    
+}

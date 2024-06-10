@@ -1,18 +1,19 @@
 .profile-dropdown {
   position: absolute;
-  right: 15px;
-
+  right: 40px;
+  animation: fadeIn 0.3s; 
   padding: 5px;
-  top: 120px;
-
-  width: 150px;
+  top: 84px;
+  border-radius: 12.5px;
+  width: 132px;
   min-height: 150px;
-  background-color: gray;
+  background-color: #ff5b5b;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
 }
+
 
 .profile-dropdown li {
   list-style: none;
@@ -27,6 +28,27 @@
   cursor: pointer;
   border-radius: 12.5px;
 }
+.profile-dropdown-buttons li {
+  text-align: center;
+  width: 135px;
+  height: 30px;
+  color: white;
+  background-color: gray;
+  border: none;
+  cursor: pointer;
+  border-radius: 12.5px;
+  margin: 0px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+.profile-dropdown-buttons li:hover {
+  box-shadow: 0 0 10px gray;
+    transition: 0.3s;
+}
+.profile-dropdown-buttons p {
+  margin-bottom: 5px;
+}
+
 
 .navbar {
   display: flex;
@@ -69,7 +91,7 @@
 .menu-button {
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: none;
   border-radius: 50%;
   color: white;
   background-color: #ff5b5b;
@@ -77,10 +99,16 @@
   width: 50px;
   height: 50px;
   cursor: pointer;
+  transition: 0.3s;
+}
+.menu-button:hover {
+  box-shadow: 0 0 8px #ff5b5b;
+  transition:0.3s;
 }
 .profile-button {
   height: 50px;
 }
+
 
 .navbar-icon {
   display: flex;
@@ -112,7 +140,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+
   border-radius: 25px;
   color: white;
   background-color: #ff5b5b;
@@ -121,6 +149,11 @@
   height: 50px;
   cursor: pointer;
   margin-right: 10px;
+  transition: 0.3s;
+}
+.nav-cart-container:hover {
+  box-shadow: 0 0 8px #ff5b5b;
+  transition:0.3s;
 }
 .nav-cart-container * {
   font-size: 25px;

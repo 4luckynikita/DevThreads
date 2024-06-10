@@ -45,33 +45,37 @@ function LoginFormModal() {
   };
 
   return (
-    <>
+    <div className="modal-fade-in login-container">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <label>
-          Email
+          <p className="login-container-title">Email</p>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Email"
           />
+          {errors.email && <p className="login-form-error">{errors.email}</p>}
         </label>
-        {errors.email && <p>{errors.email}</p>}
+
         <label>
-          Password
+          <p className="login-container-title">Password</p>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Password"
           />
+          {errors.password && <p className="login-form-error">{errors.password}</p>}
         </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-        <button className='demo-user-button' type='demoUser' onClick={demoUserLogIn}>Demo User</button>
+        <button type="submit" className="login-login-button">Log In</button>
+        <p className="log-in-as">Log In With</p>
+        <button className='demo-user-button' type='demoUser' onClick={demoUserLogIn}>👨‍💼 | Demo User</button>
       </form>
-    </>
+    </div>
   );
 }
 

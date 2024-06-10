@@ -25,7 +25,12 @@ function SignupFormModal() {
 
     if (password !== confirmPassword) {
       return setErrors({
-        confirmPassword: "Confirm Password field must be the same as the Password field",
+        confirmPassword: "Passwords do not match!",
+      });
+    }
+    if (phone.length != 10) {
+      return setErrors({
+        phone: "Enter a 10 digit number!",
       });
     }
 
@@ -52,123 +57,136 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div className="modal-fade-in signup-container">
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit} className="signup-form">
         <label>
-          Email
+        
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Email"
           />
+          {errors.email && <p className="signup-error">{errors.email}</p>}
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        
         <label>
-          Username
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            placeholder="Username"
           />
+          {errors.username && <p className="signup-error">{errors.username}</p>}
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        
         <label>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Password"
           />
+          {errors.password && <p className="signup-error">{errors.password}</p>}
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        
         <label>
-          Confirm Password
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            placeholder="Confirm Password"
           />
+          {errors.confirmPassword && <p className="signup-error">{errors.confirmPassword}</p>}
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        
         <label>
-          First Name
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
+            placeholder="First Name"
           />
+          {errors.firstName && <p className="signup-error">{errors.firstName}</p>}
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
+        
         <label>
-          Last Name
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
+            placeholder="Last Name"
           />
+          {errors.lastName && <p className="signup-error">{errors.lastName}</p>}
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
+        
         <label>
-          Address
           <input
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
+            placeholder="Address"
           />
+          {errors.address && <p className="signup-error">{errors.address}</p>}
         </label>
-        {errors.address && <p>{errors.address}</p>}
+        
         <label>
-          City
           <input
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
+            placeholder="City"
           />
+          {errors.city && <p className="signup-error">{errors.city}</p>}
         </label>
-        {errors.city && <p>{errors.city}</p>}
+        
         <label>
-          State
           <input
             type="text"
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
+            placeholder="State"
           />
+          {errors.state && <p className="signup-error">{errors.state}</p>}
         </label>
-        {errors.state && <p>{errors.state}</p>}
+        
         <label>
-          Zipcode
           <input
             type="text"
             value={zipcode}
             onChange={(e) => setZipcode(e.target.value)}
             required
+            placeholder="Zipcode"
           />
+          {errors.zipcode && <p className="signup-error">{errors.zipcode}</p>}
         </label>
-        {errors.zipcode && <p>{errors.zipcode}</p>}
+        
         <label>
-          Phone
           <input
-            type="text"
+            type="number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
+            placeholder="Phone"
+            
           />
+          {errors.phone && <p className="signup-error">{errors.phone}</p>}
         </label>
-        {errors.phone && <p>{errors.phone}</p>}
-        <button type="submit">Sign Up</button>
+        
+        <button type="submit" className="signup-signup-button">Create Account</button>
       </form>
-    </>
+    </div>
   );
 }
 

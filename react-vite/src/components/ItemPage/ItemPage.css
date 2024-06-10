@@ -1,0 +1,150 @@
+.item-page-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-page-inner-container {
+    width: 80%;
+    max-height: 1800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.item-page-type {
+    padding-left: 5px;
+    border-bottom: 2px solid gray;
+    width: 80%;
+    max-width: 1800px;
+
+}
+
+.item-page-image {
+    width: 35%;
+    min-width: 180px;
+    aspect-ratio: 6 / 8;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.item-page-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-page-description {
+    width: 60%;
+    height: 835px;
+}
+
+.item-page-description-upper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.item-page-description-upper h1 {
+    font-weight: 500;
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+
+.item-page-availability {
+    display: flex;
+    justify-content: right;
+    font-size: 23px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.item-description {
+    font-size: 23px;
+    max-width: 700px;
+}
+
+.item-page-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 40px;
+    border-bottom: 2px solid gray;
+    flex-wrap: wrap;
+}
+
+.item-page-form-container {
+    display: flex;
+    justify-content: flex-end;
+    height: 150px;
+    width: 250px;
+    flex-direction: column;
+}
+
+.item-page-form-container-title {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+}
+
+.item-page-form-container-error {
+    height: 30px;
+}
+
+.item-page-form-container-error p {
+    margin: 0;
+    color: red;
+    font-size: 23px;
+    animation: fadeIn 0.3s;
+}
+
+.item-page-form-container-dropdown {
+    width: 250px;
+    height: 35px;
+    font-size: 23px;
+    padding: 0px 5px;
+}
+
+.item-page-form-container-quantity {
+    width: 50px;
+    height: 30px;
+    font-size: 23px;
+}
+
+.item-page-add-to-cart {
+    height: 48px;
+    width: 250px;
+    font-size: 25px;
+    border-radius: 24px;
+    color: white;
+    background-color: #ff5b5b;
+    border: none;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.item-page-add-to-cart:hover {
+    box-shadow: 0 0 10px #ff5b5b;
+    transition: 0.3s;
+}
+
+.item-page-description-lower {
+    display: flex;
+    justify-content: space-between;
+}
+.item-page-description-lower h1 {
+    width: 100%;
+    border-bottom: 2px solid gray;
+    padding-bottom: 5px;
+}
+.item-page-size-chart {
+    width: 38%
+}
+.item-page-return-policy {
+    width: 58%
+}

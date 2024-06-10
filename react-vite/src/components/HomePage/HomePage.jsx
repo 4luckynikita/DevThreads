@@ -2,9 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchItems } from "../../redux/items";
 import "./HomePage.css"
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const HomePage = () => {
+    const queryParameters = new URLSearchParams(window.location.search)
+    const cartAdded = queryParameters.get("cartAdded")
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchItems());
@@ -16,11 +18,13 @@ const HomePage = () => {
     console.log("itemState", itemState);
 
 
+
     return (
         <div className="homepage-container">
-            <div className="homepage-featured-container general-container">
+            {cartAdded && <p className="cart-added-popup">Added to cart!</p>}
+            {/* <div className="homepage-featured-container general-container">
                 <h1> *** PLACEHOLDER FOR FEATURED *** </h1>
-            </div>
+            </div> */}
             <div className="homepage-items-section">
                 <h1 className="homepage-items-section-heading">Apparel</h1>
                 <div className="homepage-items-container">
@@ -30,7 +34,7 @@ const HomePage = () => {
                         <img src={item?.main_image} />
                         <div className="homepage-item-bottom">
                             <h1>{item?.name}<h2>{item?.type}</h2></h1>
-                            <p>${item?.price}</p>
+                            <p>${(Math.round(item?.price * 100) / 100).toFixed(2)}</p>
                         </div>
                     </div></NavLink>
                     </div>))}

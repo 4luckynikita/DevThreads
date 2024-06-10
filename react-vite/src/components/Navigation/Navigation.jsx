@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCartItems, deleteCartItem } from "../../redux/cartitems";
+import { getAllCartItems } from "../../redux/cartitems";
 import { useEffect } from "react";
 import ProfileButton from "./ProfileButton";
 import { IoCartOutline } from "react-icons/io5";

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllCartItems, deleteCartItem } from "../../redux/cartitems";
+import { getAllOrders } from "../../redux/orders";
 import { useNavigate } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import EditCartItemModal from "../EditCartItemModal/EditCartItemModal";
@@ -47,7 +48,7 @@ const CartPage = () => {
         const order = await dispatch(createAnOrder(orderObj));
 
         if (order?.id) {
-            cartItemState?.map(async (cartItem) => {
+            const orderItemPromises = cartItemState?.map(async (cartItem) => {
                 const orderItemObj = {
                     order_id: order?.id,
                     item_id: cartItem?.item_id,
@@ -55,8 +56,9 @@ const CartPage = () => {
                     size: cartItem?.size,
                     quantity: cartItem?.quantity
                 }
-                const orderItem = await dispatch(createAnOrderItem(orderItemObj));
-            })
+                return dispatch(createAnOrderItem(orderItemObj));
+            });
+            await Promise.all(orderItemPromises);
         }
         await clearWholeCart();
         navigate('/orders?ordered=true');

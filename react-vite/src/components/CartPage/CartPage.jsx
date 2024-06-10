@@ -58,7 +58,7 @@ const CartPage = () => {
                 const orderItem = await dispatch(createAnOrderItem(orderItemObj));
             })
         }
-        clearWholeCart();
+        await clearWholeCart();
         navigate('/orders?ordered=true');
 
     }

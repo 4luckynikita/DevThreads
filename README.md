@@ -35,12 +35,12 @@ DevThreads is a hot new site that sells clothing catered to stereotypical big ci
    ```bash
    python run.py
 
-- Start the backend Flask server: `python run.py` 
-- Start the frontend Vite server: `npm run dev`
+- Start the backend Flask server: `pipenv run flask run -p 8000` 
+- Start the frontend Vite server from the `react-vite` directory: `npm run dev`
 - Ctrl/Command click the ```localhost:XXXX``` link in the Vite server to open the live link!
 
 # Connect
-[Nikita Kastyshyn](https://www.linkedin.com/in/nikitakastyshyn/) 
+[LinkedIn](https://www.linkedin.com/in/nikitakastyshyn/) 
 
 ---
 ## This project was built with:

@@ -37,7 +37,7 @@ const CartPage = () => {
         })
     }
 
-    console.log("The state", cartItemState)
+    //console.log("The state", cartItemState)
     async function handlePlaceOrder() {
         const orderObj = {
             user_id: sessionUser.id,
@@ -65,7 +65,7 @@ const CartPage = () => {
         navigate('/orders?ordered=true');
 
     }
-    console.log("what if i told you react states arent my cup of tea");
+    //console.log("what if i told you react states arent my cup of tea");
     if (!sessionUser) navigate('/');
     return <div className="cart-container">
         <div className="cart-container-header">
@@ -76,7 +76,7 @@ const CartPage = () => {
             }} className="cart-container-clear-button">Clear Cart</button>}
         </div>
 
-        {cartItemState?.length ? <div>
+        {cartItemState?.length ? <div className="cart-item-container-outer">
 
             {cartItemState?.map((cartItem) => (
                 <div key={cartItem?.id} className="cart-item-container">

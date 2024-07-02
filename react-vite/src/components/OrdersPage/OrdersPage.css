@@ -53,14 +53,16 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .order-details-item img {
     width: 150px;
     aspect-ratio: 6/8;
     object-fit: cover;
 }.order-details-body {
-    width: 100%;
+    width: 40%;
     padding-left: 20px;
+    text-align: center;
 }
 .order-details-footer {
     width: 100%;

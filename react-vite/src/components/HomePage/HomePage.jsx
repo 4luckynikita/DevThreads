@@ -19,7 +19,7 @@ const HomePage = () => {
     let itemState = useSelector((state) => state.items?.items);
     // itemState = Object.values(itemState)
     // itemState = itemState[0]
-    console.log("itemState", itemState);
+    //console.log("itemState", itemState);
 
 
 

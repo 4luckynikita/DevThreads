@@ -14,7 +14,7 @@ const EditCartItemModal = ({ id }) => {
     let sessionUser = useSelector((state) => state.session.user);
     let cartItemState = useSelector((state) => state.cartItems.items)
     let currentItemState = cartItemState.find(item => item.id == id)
-    console.log(cartItemState)
+    //console.log(cartItemState)
     const [size, setSize] = useState(currentItemState?.size);
     const [quantity, setQuantity] = useState(currentItemState?.quantity);
     const [errors, setErrors] = useState({});
@@ -46,7 +46,7 @@ const EditCartItemModal = ({ id }) => {
         const serverResponse = await dispatch(editCartItem(id, updatedData));
         if (serverResponse != "Ok") {
             setErrors(serverResponse)
-            console.log(size);
+            //console.log(size);
         }
         else {
             dispatch(getAllCartItems(sessionUser.id));

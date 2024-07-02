@@ -1,29 +1,24 @@
-# Flask React Project
+# DevThreads
+https://devthreads-s2hk.onrender.com/
 
-This is the starter for the Flask React project.
+#
+DevThreads is a hot new site that sells clothing catered to stereotypical big city software engineers. DevThreads intends to be along the lines of other clothing brand websites, featuring apparel, a cart, a way to place and the ability to track these orders, as well as in-person locations. DevThreads is a one stop shop for any pants, flannels, dress shoes, or suits one might want to present their fullstack project while looking stylish!
 
-## Getting started
+## Run DevThreads Locally
 
-1. Clone this repository (only this branch).
+**Prerequisites**
+- NPM
+- A version of Node.js >= 14 on your local machine
+- Python 3.9
+- PostgreSQL or SQLite3 in dev environment
 
-2. Install dependencies.
-
-   ```bash
-   pipenv install -r requirements.txt
-   ```
-
-3. Create a __.env__ file based on the example with proper settings for your
-   development environment.
-
-4. Make sure the SQLite3 database connection URL is in the __.env__ file.
-
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention.**
-
-6. Get into your pipenv, migrate your database, seed your database, and run your
-   Flask app:
+**Installation**
+- Clone the repo
+- Install dependencies ```pipenv install -r requirements.txt```
+- `cd react-app` and run `npm install`
+- Create a **.env** file based on the example with proper settings for your development environment
+- Setup a PostgreSQL database, user, and password and make sure they match your **.env** file.
+- Get into your pipenv, migrate your database, seed your database, and run your app
 
    ```bash
    pipenv shell
@@ -38,94 +33,297 @@ This is the starter for the Flask React project.
    ```
 
    ```bash
-   flask run
-   ```
+   python run.py
 
-7. The React frontend has no styling applied. Copy the __.css__ files from your
-   Authenticate Me project into the corresponding locations in the
-   __react-vite__ folder to give your project a unique look.
+- Start the backend Flask server: `python run.py` 
+- Start the frontend Vite server: `npm run dev`
+- Ctrl/Command click the ```localhost:XXXX``` link in the Vite server to open the live link!
 
-8. To run the React frontend in development, `cd` into the __react-vite__
-   directory and run `npm i` to install dependencies. Next, run `npm run build`
-   to create the `dist` folder. The starter has modified the `npm run build`
-   command to include the `--watch` flag. This flag will rebuild the __dist__
-   folder whenever you change your code, keeping the production version up to
-   date.
+# Connect
+[Nikita Kastyshyn](https://www.linkedin.com/in/nikitakastyshyn/) 
 
-## Deployment through Render.com
+---
+## This project was built with:
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-First, recall that Vite is a development dependency, so it will not be used in
-production. This means that you must already have the __dist__ folder located in
-the root of your __react-vite__ folder when you push to GitHub. This __dist__
-folder contains your React code and all necessary dependencies minified and
-bundled into a smaller footprint, ready to be served from your Python API.
+## Endpoints
+Start by logging in:
+### Log In User
+- Method: POST
+- URL: `/api/auth/login`
+- Body:
 
-Begin deployment by running `npm run build` in your __react-vite__ folder and
-pushing any changes to GitHub.
+    ```json
+    {
+      "email": "demo@aa.io",
+      "password": "password"
+    }
+    ```
 
-Refer to your Render.com deployment articles for more detailed instructions
-about getting started with [Render.com], creating a production database, and
-deployment debugging tips.
+- Successful Response:
+  ```json
+  {
+    "is_musician": false,
+    "email": "demo@aa.io",
+    "firstname": "Demo",
+    "id": 3,
+    "lastname": "User",
+    "username": "demouser",
+  }
+  ```
 
-From the Render [Dashboard], click on the "New +" button in the navigation bar,
-and click on "Web Service" to create the application that will be deployed.
+---
+### Get all cart items
+- Method: GET
+- URL: `/api/cart/:userId`
+- Body: None
 
-Select that you want to "Build and deploy from a Git repository" and click
-"Next". On the next page, find the name of the application repo you want to
-deploy and click the "Connect" button to the right of the name.
+- Successful Response:
+  ```json
+  {
+    "items": [
+      {
+         "created_at": "Mon, 10 Jun 2024 09:40:21 GMT",
+         "description": "A smart spread-collar shirt is cut from finely textured yet substantial oxford cloth and tailored with pleats, a French placket and rounded, adjustable cuffs. Featuring Removable collar stays, Adjustable button cuffs, and more.",
+         "id": 1,
+         "in_stock": true,
+         "main_image": "https://devthreads.s3.amazonaws.com/Trim+Fit+Royal+Oxford+Dress+Shirt.png",
+         "name": "D.D. Trim Fit Royal Oxford",
+         "price": 129.99,
+         "sizes": "14,15,16,17,18",
+         "type": "Shirt",
+         "updated_at": "Mon, 10 Jun 2024 09:40:21 GMT"
+      },
+      {
+         "created_at": "Mon, 10 Jun 2024 09:40:21 GMT",
+         "description": "A nice and cool shirt, a French placket and rounded, adjustable cuffs. Featuring Removable collar stays, Adjustable button cuffs, and more.",
+         "id": 2,
+         "in_stock": true,
+         "main_image": "https://devthreads.s3.amazonaws.com/Nice+Shirt+Real+Url.png",
+         "name": "Awesome Nice and cool",
+         "price": 32.99,
+         "sizes": "14,15,16,17,18",
+         "type": "Shirt",
+         "updated_at": "Mon, 10 Jun 2024 09:40:21 GMT"
+      }
+    ]
+  }
+  ```
 
-Now you need to fill out the form to configure your app. Most of the setup will
-be handled by the __Dockerfile__, but you do need to fill in a few fields.
+### Create a cart item
+- Method: POST
+- URL: `/api/cart/`
+- Body:
 
-Start by giving your application a name.
+    ```json
+    {
+      "item_id": 2,
+      "user_id": 1,
+      "size": "XL",
+      "quantity": 1,
+    }
+    ```
 
-Make sure the Region is set to the location closest to you, the Branch is set to
-"main", and Runtime is set to "Docker". You can leave the Root Directory field
-blank. (By default, Render will run commands from the root directory.)
+- Successful Response:
+  ```json
+  {
+      "item_id": 2,
+      "user_id": 1,
+      "size": "XL",
+      "quantity": 1,
+      "updated_at": "Mon, 10 Jun 2024 09:40:21 GMT",
+      "created_at": "Mon, 10 Jun 2024 09:40:21 GMT",
+      "id": 3
+  }
+  ```
 
-Select "Free" as your Instance Type.
 
-### Add environment variables
+### Update a cart item
+- Method: PUT
+- URL: `/api/cart/:cartItemId`
+- Body:
 
-In the development environment, you have been securing your environment
-variables in a __.env__ file, which has been removed from source control (i.e.,
-the file is gitignored). In this step, you will need to input the keys and
-values for the environment variables you need for production into the Render
-GUI.
+    ```json
+    {
+      "size": "XL",
+    }
+    ```
 
-Add the following keys and values in the Render GUI form:
+- Successful Response:
+  ```json
+  {
+      "item_id": 2,
+      "user_id": 1,
+      "size": "L",
+      "quantity": 1,
+      "updated_at": "Mon, 11 Jun 2024 11:40:31 GMT",
+      "created_at": "Mon, 10 Jun 2024 09:40:21 GMT",
+      "id": 3
+  }
+  ```
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
+  ### Delete a cart item
+- Method: DELETE
+- URL: `/api/cart/:cartItemId`
+- Body: None
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+- Successful Response:
+  ```json
+  {
+    "message": "Cart Item deleted successfully."
+  }
+  ```
+--
 
-Add the following keys and values:
+### Create an order
+- Method: POST
+- URL: `/api/orders/`
+- Body:
+  ```json
+  {
+    "user_id": 1,
+    "total": 100.50,
+    "status": "Awaiting Shipment"
+  }
+  ```
+- Successful Response:
+  ```json
+  {
+    "id": 1,
+    "user_id": 1,
+    "total": 100.50,
+    "status": "Awaiting Shipment",
+    "delivery_date": "2024-07-02T09:40:21.000Z",
+    "created_at": "2024-07-02T09:40:21.000Z",
+    "updated_at": "2024-07-02T09:40:21.000Z"
+  }
+  ```
 
-- DATABASE_URL (copy value from the **External Database URL** field)
+### Create an order item
+- Method: POST
+- URL: `/api/orders/item`
+- Body:
+  ```json
+  {
+    "order_id": 1,
+    "item_id": 2,
+    "user_id": 1,
+    "size": "L",
+    "quantity": 1
+  }
+  ```
+- Successful Response:
+  ```json
+  {
+    "id": 1,
+    "order_id": 1,
+    "item_id": 2,
+    "user_id": 1,
+    "size": "L",
+    "quantity": 1,
+    "created_at": "2024-07-02T09:40:21.000Z",
+    "updated_at": "2024-07-02T09:40:21.000Z"
+  }
+  ```
 
-**Note:** Add any other keys and values that may be present in your local
-__.env__ file. As you work to further develop your project, you may need to add
-more environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment.
+### Get a user's orders and associated items
+- Method: GET
+- URL: `/api/orders/:id`
+- Body: None
+- Successful Response:
+  ```json
+  [
+    {
+      "id": 1,
+      "user_id": 1,
+      "total": 100.50,
+      "status": "Awaiting Shipment",
+      "delivery_date": "2024-07-02T09:40:21.000Z",
+      "created_at": "2024-07-02T09:40:21.000Z",
+      "updated_at": "2024-07-02T09:40:21.000Z",
+      "items": [
+        {
+          "id": 1,
+          "order_id": 1,
+          "item_id": 2,
+          "user_id": 1,
+          "size": "L",
+          "quantity": 1,
+          "created_at": "2024-07-02T09:40:21.000Z",
+          "updated_at": "2024-07-02T09:40:21.000Z",
+          "details": {
+            "id": 2,
+            "name": "Awesome Nice and cool",
+            "type": "Shirt",
+            "description": "A nice and cool shirt, a French placket and rounded, adjustable cuffs.",
+            "price": 32.99,
+            "sizes": "14,15,16,17,18",
+            "in_stock": true,
+            "main_image": "https://devthreads.s3.amazonaws.com/Nice+Shirt+Real+Url.png",
+            "created_at": "2024-07-02T09:40:21.000Z",
+            "updated_at": "2024-07-02T09:40:21.000Z"
+          }
+        }
+      ]
+    }
+  ]
+  ```
 
-### Deploy
+### Delete an order and associated OrderItems
+- Method: DELETE
+- URL: `/api/orders/delete/:id`
+- Body: None
+- Successful Response:
+  ```json
+  {
+    "message": "Order deleted successfully"
+  }
+  ```
 
-Now you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your Dockerfile
-commands being executed and any errors that occur.
+### Update an Order
+- Method: PUT
+- URL: `/api/orders/:id`
+- Body:
+  ```json
+  {
+    "total": 120.75
+  }
+  ```
+- Successful Response:
+  ```json
+  {
+    "id": 1,
+    "user_id": 1,
+    "total": 120.75,
+    "status": "Awaiting Shipment",
+    "delivery_date": "2024-07-02T09:40:21.000Z",
+    "created_at": "2024-07-02T09:40:21.000Z",
+    "updated_at": "2024-07-02T09:40:21.000Z"
+  }
+  ```
 
-When deployment is complete, open your deployed site and check to see that you
-have successfully deployed your Flask application to Render! You can find the
-URL for your site just below the name of the Web Service at the top of the page.
+### Update an Order Item
+- Method: PUT
+- URL: `/api/orders/item/:id`
+- Body:
+  ```json
+  {
+    "size": "XL",
+    "quantity": 2
+  }
+  ```
+- Successful Response:
+  ```json
+  {
+    "id": 1,
+    "order_id": 1,
+    "item_id": 2,
+    "user_id": 1,
+    "size": "XL",
+    "quantity": 2,
+    "created_at": "2024-07-02T09:40:21.000Z",
+    "updated_at": "2024-07-02T09:40:21.000Z"
+  }
+  ```
 
-**Note:** By default, Render will set Auto-Deploy for your project to true. This
-setting will cause Render to re-deploy your application every time you push to
-main, always keeping it up to date.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+---

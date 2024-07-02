@@ -26,7 +26,7 @@ const ItemPage = () => {
 
 
     if (!itemState || Object.values(itemState)?.length == 0) return <h1>Item not found!</h1>
-    console.log("itemState", itemState);
+    //console.log("itemState", itemState);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,7 +55,7 @@ const ItemPage = () => {
 
         if (!serverResponse.item_id) {
             setErrors(serverResponse)
-            console.log('ERROR ', errors);
+            //console.log('ERROR ', errors);
         }
         else {
             dispatch(getAllCartItems(sessionUser.id));

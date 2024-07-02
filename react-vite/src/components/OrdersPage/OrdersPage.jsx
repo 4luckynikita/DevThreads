@@ -19,7 +19,7 @@ const OrdersPage = () => {
         dispatch(getAllOrders(sessionUser?.id));
     }, [dispatch, sessionUser]);
     let ordersState = useSelector((state) => state.orders.orders)
-    console.log(ordersState)
+    //console.log(ordersState)
     const currentDate = new Date();
     currentDate.setMinutes(currentDate.getMinutes() - 5);
 
@@ -29,11 +29,11 @@ const OrdersPage = () => {
         order?.items?.map((item) => {
 
             totalski += parseFloat((item?.details?.price * item?.quantity).toFixed(2));
-            console.log("Totalski", totalski)
+            //console.log("Totalski", totalski)
         })
         orderTotals[order?.id] = totalski
     })
-    console.log("Totals", orderTotals)
+    //console.log("Totals", orderTotals)
 
     return <div className="orders-container">
         {ordered && <p className="order-placed-popup">Order has been placed! Thank you!</p>}

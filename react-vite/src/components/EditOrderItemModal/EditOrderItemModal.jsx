@@ -16,7 +16,7 @@ const EditOrderItemModal = ({ id, orderId }) => {
     let orderItemState = useSelector((state) => state?.orders.orders)
     let currentOrderState = orderItemState.find(item => item.id === orderId)
     let currentItemState = currentOrderState?.items?.find(item => item.id === id)
-    console.log(id, currentItemState)
+    //console.log(id, currentItemState)
     const [size, setSize] = useState(currentItemState?.size);
     const [quantity, setQuantity] = useState(currentItemState?.quantity);
     const [errors, setErrors] = useState({});
@@ -49,7 +49,7 @@ const EditOrderItemModal = ({ id, orderId }) => {
         const serverResponse = await dispatch(editAnOrderItem(id, updatedData));
         if (serverResponse != "Ok") {
             setErrors(serverResponse)
-            console.log(size);
+            //console.log(size);
         }
         else {
             // const updatedData2 = {

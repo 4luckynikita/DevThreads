@@ -4,7 +4,7 @@ const AboutPage = () => {
     return <div className="about-container">
         <h1 className="about-container-heading">About</h1>
         <div className="about-inner">
-            <img src="https://asset.cloudinary.com/dkxfjbynk/b9807e70c98852986ec1d34229afdd67" className="about-img" />
+            <img src="https://res.cloudinary.com/dkxfjbynk/image/upload/v1729741941/headshot_cwmkvv.jpg" className="about-img" />
             <h2>DevThreads was built by Nikita Kastyshyn</h2>
             <a href="mailto:4luckynikita@gmail.com">4luckynikita@gmail.com</a>
             <p className="hello-why-r-u-here">Check out the repo and Nikita's LinkedIn below:</p>
